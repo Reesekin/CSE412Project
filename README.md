@@ -9,4 +9,4 @@ How to run:
 2. Go to your browser and type in 'localhost:3000/'
 
 Bugs:
-Refreshing a page too quickly may break the SQL interface
+~~Refreshing a page too quickly may break the SQL interface ~~Fixed
