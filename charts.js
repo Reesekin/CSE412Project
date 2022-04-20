@@ -61,6 +61,7 @@ async function drawPieChart(){
             return color(i);
         })
         .attr("onmouseover", function(d, i) {return `arcSelect(${i})`;})
+        .attr("onclick", function(d, i) {return `arcSelect(${i})`;})
         .attr("d", arc);
 
     arcs.append("text")
