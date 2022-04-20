@@ -4,7 +4,8 @@ Prerequisites:
 Installation of Node.js
 
 How to run:
-1. In your command prompt run 'node index.js'
+1. In your command prompt run 'npm i'
+1. Then run 'node index.js'
 2. Go to your browser and type in 'localhost:3000/'
 
 Bugs:
