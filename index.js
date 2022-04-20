@@ -7,7 +7,7 @@ const pool = new Pool({
   user: "postgres",
   database: "countryprofiles",
   password: "root",
-  port: 5432
+  port: 8888
 });
 
 
@@ -17,12 +17,14 @@ async function getData(){
   const query = 'SELECT json_agg(t) FROM (SELECT * FROM countries NATURAL JOIN regions NATURAL JOIN population NATURAL JOIN economy ORDER BY countrykey ASC) t;'
   const client = await pool.connect();
   const res = await client.query(query);
+  client.release();
   return res.rows[0].json_agg;;
 }
 async function fetch(q){
   const query = q;
   const client = await pool.connect();
   const res = await client.query(query);
+  client.release();
   return res.rows[0].json_agg;;
 }
 
