@@ -1,5 +1,5 @@
 var dataset;
-var rsum;
+var rsum, population;
 
 //fetch data from json page and return it
 async function fetchJSON(page){
@@ -16,6 +16,8 @@ async function fetchJSON(page){
 document.addEventListener('DOMContentLoaded', async() => {
     dataset = await fetchJSON("data.json");
     rsum = await fetchJSON("rsum.json");
+    population = await fetchJSON("population.json");
     await drawPieChart();
+    await drawBarGraph();
     await drawBar();
 });

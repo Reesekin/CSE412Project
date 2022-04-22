@@ -9,9 +9,9 @@ var format = require('pg-format');
 const pool = new Pool({
   host: "localhost",
   user: "postgres",
-  database: "countryprofiles",
-  password: "root",
-  port: 5432
+  database: "cse412",
+  password: "0000",
+  port: 8888
 });
 
 var data = [];

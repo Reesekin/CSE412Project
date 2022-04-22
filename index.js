@@ -40,3 +40,9 @@ async function fetch(q){
     const q = "SELECT json_agg(t) FROM (SELECT rname, SUM(surfacearea) surfacearea FROM regions NATURAL JOIN countries GROUP BY regionkey) t;";
     res.json(await fetch(q));
     });
+
+  //fetch population from database
+  server.app.get('/population.json', async (req, res) => {
+    const q = "SELECT json_agg(t) FROM (SELECT cname, popnumber FROM population, countries WHERE population.countrykey = countries.id) t;";
+    res.json(await fetch(q));
+    });
