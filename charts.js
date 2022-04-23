@@ -94,7 +94,7 @@ async function drawPieChart(){
 async function drawBarGraph(){
     var data = population;
 
-    var svg = d3.select("svg"),
+    var svg = d3.select("#population"),
         margin = 200,
         width = svg.attr("width") - margin,
         height = svg.attr("height") - margin;
@@ -114,7 +114,7 @@ async function drawBarGraph(){
 
     g.append("g")
          .call(d3.axisLeft(yScale).tickFormat(function(d){
-             return "$" + d;
+             return d;
          }).ticks(10))
          .append("text")
          .attr("y", 6)
