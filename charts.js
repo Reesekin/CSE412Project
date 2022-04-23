@@ -152,5 +152,5 @@ async function drawBarGraph(){
       .attr('x', width / 2 + margin)
       .attr('y', 40)
       .attr('text-anchor', 'middle')
-      .text('Population in Countries')
+      .text('Top 10 Population in Countries')
 }
