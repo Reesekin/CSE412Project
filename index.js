@@ -43,6 +43,6 @@ async function fetch(q){
 
   //fetch population from database
   server.app.get('/population.json', async (req, res) => {
-    const q = "SELECT json_agg(t) FROM (SELECT cname, popnumber FROM population, countries WHERE population.countrykey = countries.id ORDER BY popnumber DESC limit 10) t;";
+    const q = "SELECT json_agg(t) FROM (SELECT cname, popnumber FROM population, countries WHERE population.countrykey = countries.id ORDER BY population.popnumber DESC limit 10) t;";
     res.json(await fetch(q));
     });
