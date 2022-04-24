@@ -35,6 +35,19 @@ async function fetch(q){
 
   //fetch region surface areas from database
   server.app.get('/rsum.json', async (req, res) => {
-    const q = "SELECT json_agg(t) FROM (SELECT rname, SUM(surfacearea) surfacearea FROM regions NATURAL JOIN countries GROUP BY regionkey) t;";
+    const q = "SELECT json_agg(t) FROM (SELECT regionkey, rname, SUM(surfacearea) surfacearea FROM regions NATURAL JOIN countries GROUP BY regionkey) t;";
+    res.json(await fetch(q));
+    });
+
+    //get data from certain region
+    server.app.get('/query', async (req, res) => {
+      let regionkey = req.query.regionkey;
+      const q = `SELECT json_agg(t) FROM (SELECT * FROM countries NATURAL JOIN regions NATURAL JOIN population NATURAL JOIN economy WHERE regionkey=${regionkey} ORDER BY countrykey ASC) t;`;
+      res.json(await fetch(q));
+    });
+
+  //fetch population from database
+  server.app.get('/population.json', async (req, res) => {
+    const q = "SELECT json_agg(t) FROM (SELECT countries.countrykey,cname, popnumber FROM population, countries WHERE population.countrykey = countries.countrykey ORDER BY population.popnumber DESC limit 10) t;";
     res.json(await fetch(q));
     });

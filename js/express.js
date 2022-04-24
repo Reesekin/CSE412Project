@@ -21,6 +21,7 @@ module.exports = class expressServer{
         this.app.get('/charts.js', async (req, res) => {
             res.sendFile(path.join(__dirname, "./../charts.js"));
             });
+        this.app.use(express.static('public'))
         //Start
         this.app.listen(port, () => {
         console.log(`G22 Project listening on port ${port}`)

@@ -1,5 +1,7 @@
 var dataset;
 var rsum;
+var population;
+var tooltip;
 
 //fetch data from json page and return it
 async function fetchJSON(page){
@@ -16,6 +18,8 @@ async function fetchJSON(page){
 document.addEventListener('DOMContentLoaded', async() => {
     dataset = await fetchJSON("data.json");
     rsum = await fetchJSON("rsum.json");
+    population = await fetchJSON("population.json");
+    tooltip = d3.selectAll("#tooltip");
     await drawPieChart();
-    await drawBar();
+    await drawBarGraph();
 });
