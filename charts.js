@@ -278,8 +278,18 @@ async function drawScatter(){
         var g = svg.append("g")
         .attr("transform", "translate(" + 100 + "," + 100 + ")");
 
-        xScale.domain([0, d3.max(dataset, function(d) {return d[xattr.val()]; })]);
-        yScale.domain([0, d3.max(dataset, function(d) {return d[yattr.val()]; })]);
+        xScale.domain([0, d3.max(dataset, function(d) {
+            if(d[yattr.val()] > 0){
+                return d[xattr.val()]; 
+            }
+            else return 0;
+        })]);
+        yScale.domain([0, d3.max(dataset, function(d) {
+            if(d[xattr.val()] > 0){
+            return d[yattr.val()]; 
+            }
+            else return 0;
+        })]);
 
         g.append("g")
         .attr("transform", "translate(0," + height + ")")
