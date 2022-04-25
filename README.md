@@ -15,9 +15,9 @@ How to import:
 6. Done, now you can run the application 
 
 How to run:
-2. In your command prompt run 'npm i' to install all the dependencies (you must be in the directory of the application)
-3. The default port is 5432 for the postgres server and 3000 for the express server (Make sure they're not used by anything else and change if needed, the postgres login information is in index.js)
-4. If you're on macOS or Linux, make sure your postgres service is running...
-5. Then run 'node index.js'
-6. Go to your browser and type in 'localhost:3000/'
+1. In your command prompt run 'npm i' to install all the dependencies (you must be in the directory of the application)
+2. The default port is 5432 for the postgres server and 3000 for the express server (Make sure they're not used by anything else and change if needed, the postgres login information is in index.js)
+3. If you're on macOS or Linux, make sure your postgres service is running...
+4. Then run 'node index.js'
+5. Go to your browser and type in 'localhost:3000/'
 
