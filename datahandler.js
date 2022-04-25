@@ -19,7 +19,9 @@ document.addEventListener('DOMContentLoaded', async() => {
     dataset = await fetchJSON("data.json");
     rsum = await fetchJSON("rsum.json");
     population = await fetchJSON("population.json");
+    gdp = await fetch("gdp.json");
     tooltip = d3.selectAll("#tooltip");
     await drawPieChart();
     await drawBarGraph();
+    await GDPGraph();
 });
