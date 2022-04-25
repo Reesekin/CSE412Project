@@ -39,10 +39,17 @@ async function fetch(q){
     res.json(await fetch(q));
     });
 
-    //get data from certain region
+    //get data by region key
     server.app.get('/query', async (req, res) => {
       let regionkey = req.query.regionkey;
       const q = `SELECT json_agg(t) FROM (SELECT * FROM countries NATURAL JOIN regions NATURAL JOIN population NATURAL JOIN economy WHERE regionkey=${regionkey} ORDER BY countrykey ASC) t;`;
+      res.json(await fetch(q));
+    });
+
+    //get data by cname
+    server.app.get('/search', async (req, res) => {
+      let cname = req.query.cname;
+      const q = `SELECT json_agg(t) FROM (SELECT * FROM countries NATURAL JOIN regions NATURAL JOIN population NATURAL JOIN economy WHERE countries.cname='${cname}' ORDER BY countrykey ASC) t;`;
       res.json(await fetch(q));
     });
 

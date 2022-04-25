@@ -1,5 +1,38 @@
 * { box-sizing: border-box;}
 
+.flag{
+    width:20px;
+
+}
+
+#countryholder{
+    background-color: #101010;
+    width: 400px;
+    padding: 15px;
+    border-radius:10px;
+    margin: auto;
+    margin-top: 50px;
+}
+
+#cheader{
+    display:flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#gico{
+    width: 35px;
+    height: 35px;
+}
+
+#logo{
+    display: flex;
+    align-items: center;
+    float:left;
+}
+
 img[alt="world"]{
     top: 0;
     left: 0;
@@ -10,6 +43,7 @@ img[alt="world"]{
     opacity: 80%;
     box-shadow:0 2px 5px 0 rgb(0 0 0 / 76%), 0 3px 10px 0 rgb(0 0 0 / 46%);
 }
+
 
 html{scroll-behavior: smooth;}
 
@@ -213,10 +247,35 @@ g {
     width:500px;
 }
 
+a { text-decoration: none; }
+
+.ttxt{
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.7em;
+    color: #fff;
+}
+.ctxt{
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.7em;
+    color: #fff;
+}
+
+#tooltip-header{
+    display:flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#tooltip-title{
+    margin-left: 10px;
+}
+
 #tooltip{
     background-color: rgb(14, 14, 14);
     padding: 10px;
-    width: 200px;
+    width: 225px;
     border-radius: 5px;
     position:absolute;
 }
@@ -227,6 +286,14 @@ g {
 .bar:hover{
     stroke: #000;
     stroke-width: 4px;
+}
+
+.autoComplete_wrapper>ul>li mark {
+    color: rgb(43, 121, 230) !important;
+}
+
+rect{
+    cursor:pointer;
 }
 
 @media (min-width:993px){

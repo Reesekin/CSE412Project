@@ -1,5 +1,33 @@
 var selectedArc;
 
+async function selectCountry(){
+    var cname = document.getElementById("autoComplete").value;
+    var cselector = await d3.selectAll("#countryholder");
+    console.log(cname);
+    var result = await fetchJSON(`search?cname=${cname}`);
+    if(result == null){
+        alert("Country not found");
+    }
+    else {
+        d3.select("#searchcname").text(result[0].cname);
+        d3.select("#cflag").attr("src", `flags/${result[0].countrykey}.png`);
+        await cselector.selectAll("#select-flag").attr("src", `flags/${result[0].countrykey}.png`);
+        await cselector.selectAll("#select-region").text(`Region: ${result[0].rname}`);
+        await cselector.selectAll("#select-title").text(result[0].cname);
+        await cselector.selectAll("#select-population").text(`Population (in thousands): ${result[0].popnumber}`);
+        await cselector.selectAll("#select-growthrate").text(`Population growth rate (average annual %): ${result[0].popgrowthrate}%`);
+        await cselector.selectAll("#select-popdensity").text(`Population density (per km²): ${result[0].density}`);
+        await cselector.selectAll("#select-SA").text(`Surface area: ${result[0].surfacearea} km²`);
+        await cselector.selectAll("#select-sexratio").text(`Sex ratio (m per 100 f, 2017): ${result[0].sexratio}`);
+        await cselector.selectAll("#select-urbanpop").text(`Urban population (% of total population): ${result[0].urbanpop}%`);
+        await cselector.selectAll("#select-urbangrowthrate").text(`Urban population (% of total population): ${result[0].urbanpopgrowthrate}%`);
+    }
+    
+    // dataset.filter(function(d){
+    //     return d.cname == cname;
+    // }
+}
+
 async function barSelect(e, ckey){
     //transform tooltip position
     var data = dataset;
@@ -8,7 +36,16 @@ async function barSelect(e, ckey){
         return (d.countrykey == ckey);
     });
     dat = dat[0];
+    console.log(dat);
+    await tooltip.selectAll("#tooltip-flag").attr("src", `flags/${dat.countrykey}.png`);
     await tooltip.selectAll("#tooltip-title").text(dat.cname);
+    await tooltip.selectAll("#tooltip-population").text(`Population (in thousands): ${dat.popnumber}`);
+    await tooltip.selectAll("#tooltip-growthrate").text(`Population growth rate (average annual %): ${dat.popgrowthrate}%`);
+    await tooltip.selectAll("#tooltip-popdensity").text(`Population density (per km²): ${dat.density}`);
+    await tooltip.selectAll("#tooltip-SA").text(`Surface area: ${dat.surfacearea} km²`);
+    await tooltip.selectAll("#tooltip-sexratio").text(`Sex ratio (m per 100 f, 2017): ${dat.sexratio}`);
+    await tooltip.selectAll("#tooltip-urbanpop").text(`Urban population (% of total population): ${dat.urbanpop}%`);
+    await tooltip.selectAll("#tooltip-urbangrowthrate").text(`Urban population (% of total population): ${dat.urbanpopgrowthrate}%`);
 }
 async function hide(e){
     await tooltip.attr("style", `top: ${e.pageY}px; left: ${e.pageX+20}px; visibility: hidden;`);
@@ -23,7 +60,9 @@ async function arcSelect(arc){
     console.log(countries)
     clist.innerHTML = '';
     countries.forEach(function(d){
-        clist.append("li").text(`${d.cname}, ${d.surfacearea} km²`);
+        var li = clist.append("li");
+        li.append('img').attr("src", `flags/${d.countrykey}.png`).classed("flag", true);
+        li.append('span').text(`${d.cname}, ${d.surfacearea} km²`);
     });
     selectedArc = d3.select(`#rlabel${arc}`);
     }, 100);
@@ -176,4 +215,11 @@ async function drawPieChart(){
         .attr('y', 50)
         .attr('text-anchor', 'start')
         .text('Top 10 Population in Countries')
+}
+
+async function drawScatter(){
+    var svg = d3.select("#scatterplot"),
+        margin = 200,
+        width = svg.attr("width") - margin,
+        height = svg.attr("height") - margin;
 }

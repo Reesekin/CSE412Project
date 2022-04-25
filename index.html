@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.01.min.css">
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="charts.js"></script>
   <script src="datahandler.js"></script>
@@ -20,11 +22,14 @@
   <nav>
 
     <div class="bar box">
-      <a href="#home">World Analytics</a>
+      <div id="logo">
+        <img id="gico" src="/globeicon.png">
+        <a href="#home">World Analytics</a>
+      </div>
       <div class="rightside">
         <a href="#about">About</a>
         <a href="#data">Data</a>
-        <a href="#graph">Graph</a>
+        <a href="#lookup">Lookup</a>
       </div>
     </div>
 
@@ -78,18 +83,60 @@
           </svg>
           <div id="tooltip">
           <div id="tooltip-content">
-            <h2 id="tooltip-title">Tooltip</h2>
-            <p id="tooltip-text">data: blah</p>
+            <div id="tooltip-header">
+              <img class="flag" id="tooltip-flag" src="/flags/218.png"/>
+              <h3 id="tooltip-title">Tooltip</h2>
+            </div>
+            
+            <p class="ttxt" id="tooltip-population">Population: </p>
+            <p class="ttxt" id="tooltip-growthrate">Population growth rate (average annual %)</p>
+            <p class="ttxt" id="tooltip-popdensity">Population density (per km², 2017)</p>
+            <p class="ttxt" id="tooltip-SA">Surface Area:</p>
+            <p class="ttxt" id="tooltip-sexratio">Sexratio: </p>
+            <p class="ttxt" id="tooltip-urbanpop">Urban Population: </p>
+            <p class="ttxt" id="tooltip-urbangrowthrate">Urban population growth rate (average annual %): </p>
           </div>
         </div>
         </div>
         <br>    
     </div>
     <hr>
-
+    <!-- Plot Diagram -->
+    <div>
+      <span>x attr:</span>
+      <select></select>
+      <svg width="1200" height="600" class="data3" id="scatterplot">
+      </svg>
+    </div>
+    <hr>
     <!-- Graph -->
-    <div class="graphpage" id="graph">
-      <h1>Graph</h1><br>
+    <div class="lookuppage" id="lookup">
+      <h1>Lookup</h1><br>
+      <div>
+        <h3>Search by Country</h3>
+        <div class="autoComplete_wrapper">
+          <input id="autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off">
+        </div>
+        <div id="countryholder">
+          <div id="cheader">
+            <img id="cflag" src="flags/218.png">
+            <h3 id="searchcname">United States of America</h3>
+            <div>
+              <p class="ctxt" id="select-region">Region: NorthernAmerica</p>
+              <p class="ctxt" id="select-SA">Surface area: 9833517 km²</p>
+              <p>Population:</p>
+              <p class="ctxt" id="select-population">Population (in thousands): 324460: </p>
+              <p class="ctxt" id="select-growthrate">Population growth rate (average annual %): 0.7%</p>
+              <p class="ctxt" id="select-popdensity">Population density (per km²): 35.5</p>
+              <p class="ctxt" id="select-sexratio">Sex ratio (m per 100 f, 2017): 98</p>
+              <p class="ctxt" id="select-urbanpop">Urban population (% of total population): 81.6%</p>
+              <p class="ctxt" id="select-urbangrowthrate">Urban population (% of total population): 1%</p>
+              <p>Economy</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
     
   </div>
@@ -98,6 +145,5 @@
   <footer>
     <p>By Group 22 CSE 412</p>
   </footer>
-
   </body>
 </html>

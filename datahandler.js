@@ -2,7 +2,7 @@ var dataset;
 var rsum;
 var population;
 var tooltip;
-
+var countries;
 //fetch data from json page and return it
 async function fetchJSON(page){
     var d;
@@ -17,9 +17,35 @@ async function fetchJSON(page){
 
 document.addEventListener('DOMContentLoaded', async() => {
     dataset = await fetchJSON("data.json");
+    countries = await dataset.map(function(d) { return d.cname;});
     rsum = await fetchJSON("rsum.json");
     population = await fetchJSON("population.json");
     tooltip = d3.selectAll("#tooltip");
+    const autoCompleteJS = new autoComplete({
+        placeHolder: "Search for Country...",
+        data: {
+            src: countries,
+            cache: true,
+        },
+        resultItem: {
+            highlight: true
+        },
+        events: {
+            input: {
+                selection: (event) => {
+                    const selection = event.detail.selection.value;
+                    autoCompleteJS.input.value = selection;
+                    console.log("ENTERED!!");
+                    selectCountry();
+                }
+            }
+        }
+    });
+    $("#autoComplete").on('keyup', async function (e) {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            selectCountry();
+        }
+    });
     await drawPieChart();
     await drawBarGraph();
 });
