@@ -3,8 +3,8 @@
 World Analytics Project by Tommy Thai, and Peter Kim.
 
 Prerequisites:
--Installation of Node.js
--Importation of the dumpfile
+*Installation of Node.js
+*Importation of the dumpfile
 
 How to run:
 1. In your command prompt run 'npm i' to install all the dependencies
