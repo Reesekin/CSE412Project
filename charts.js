@@ -364,8 +364,6 @@ async function GDPGraph(){
 
     xScale.domain(data.map(function(d) { return d.cname; }));
     yScale.domain([0, d3.max(data, function(d) { return d.gdpval; })]);
-    console.log(data.forEach(function(d){console.log(d.cname, d.gdpval);}));
-    console.log("max: " + d3.max(data, function(d) { return d.gdpval; }));
     g.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(xScale));
@@ -401,9 +399,9 @@ async function GDPGraph(){
 
     svg.append('text')
         .attr('class', 'label')
-        .attr('x', width / 2 + margin)
-        .attr('y', height + margin * 1.7)
-        .attr('text-anchor', 'middle')
+        .attr('x', (width/2) + margin/2)
+        .attr('y', height + margin/1.5)
+        .attr('text-anchor', 'start')
         .text('Countries')
 
     svg.append('text')
