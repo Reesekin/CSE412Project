@@ -1,6 +1,7 @@
 var dataset;
 var rsum;
 var population;
+var gdp;
 var tooltip;
 var countries;
 //fetch data from json page and return it
@@ -18,6 +19,7 @@ async function fetchJSON(page){
 document.addEventListener('DOMContentLoaded', async() => {
     dataset = await fetchJSON("data.json");
     countries = await dataset.map(function(d) { return d.cname;});
+    gdp = await fetchJSON("gdp.json");
     rsum = await fetchJSON("rsum.json");
     population = await fetchJSON("population.json");
     tooltip = d3.selectAll("#tooltip");
@@ -46,6 +48,8 @@ document.addEventListener('DOMContentLoaded', async() => {
             selectCountry();
         }
     });
+    await drawScatter();
     await drawPieChart();
     await drawBarGraph();
+    await GDPGraph();
 });

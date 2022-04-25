@@ -58,3 +58,9 @@ async function fetch(q){
     const q = "SELECT json_agg(t) FROM (SELECT countries.countrykey,cname, popnumber FROM population, countries WHERE population.countrykey = countries.countrykey ORDER BY population.popnumber DESC limit 10) t;";
     res.json(await fetch(q));
     });
+
+    //gdp for each country
+  server.app.get('/gdp.json', async (req, res) => {
+    const q = "SELECT json_agg(t) FROM (SELECT countries.countrykey,cname, gdpval FROM economy, countries WHERE economy.countrykey = countries.countrykey ORDER BY economy.gdpval DESC limit 10) t;";
+    res.json(await fetch(q));
+    });

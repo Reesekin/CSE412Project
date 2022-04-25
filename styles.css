@@ -2,7 +2,16 @@
 
 .flag{
     width:20px;
+}
 
+.center{
+    display:flex;
+    flex: 1;
+    align-items: center;
+    flex-direction: column;
+}
+.center .ctxt{
+    margin: 0 0 !important;
 }
 
 #countryholder{
@@ -64,8 +73,12 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.flagdot:hover{
+    width:100px;
+    height:100px;
+}
 
-h1, h2, h3, p {
+h1, h2, h3, p, span {
     font-family: 'Roboto', sans-serif;
     color:#eee;
     text-shadow: 4px 4px 4px #101010;
@@ -260,7 +273,7 @@ a { text-decoration: none; }
     color: #fff;
 }
 
-#tooltip-header{
+#tooltip-header, #tooltip-header2{
     display:flex;
     flex: 1;
     flex-direction: row;
@@ -268,11 +281,11 @@ a { text-decoration: none; }
     justify-content: center;
 }
 
-#tooltip-title{
+#tooltip-title, #tooltip-title2{
     margin-left: 10px;
 }
 
-#tooltip{
+#tooltip, #tooltip2{
     background-color: rgb(14, 14, 14);
     padding: 10px;
     width: 225px;
