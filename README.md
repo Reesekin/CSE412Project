@@ -2,6 +2,9 @@
 
 World Analytics Project by Tommy Thai, and Peter Kim.
 
+# Site Demo:
+You can access the site deployed on heroku at: https://worldanalytics.herokuapp.com/
+
 ## Prerequisites:
 * Installation of Node.js
 * Importation of the dumpfile
