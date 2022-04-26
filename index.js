@@ -1,13 +1,11 @@
 
 const { Client, Pool } = require('pg/lib');
 const expressServer = require('./js/express');
+const connectionString = 'postgres://pviuksbphnxzmw:c6ad4f0c8c6f88eda2b5bce49a96bc5cef39636c19b25d8485baec5051933bea@ec2-52-86-56-90.compute-1.amazonaws.com:5432/d3dk05l1ip1p8l';
 
 const pool = new Pool({
-  host: "localhost",
-  user: "postgres",
-  database: "countryprofiles",
-  password: "root",
-  port: 5432
+  connectionString,
+  ssl: { rejectUnauthorized: false},
 });
 
 //SELECT json_agg(t) FROM (SELECT * FROM countries NATURAL JOIN regions NATURAL JOIN population NATURAL JOIN economy ORDER BY countrykey ASC) t;
