@@ -104,7 +104,7 @@ async function arcSelect(arc){
     await d3.selectAll("use").attr("xlink:href", `#rlabel${arc}`);
     var clist = await d3.selectAll("#clist");
     d3.selectAll("#clist").selectAll("*").remove();
-    var countries = await fetchJSON(`query?regionkey=${rsum[arc].regionkey}`);
+    var countries = dataset.filter(function(d){ return (d.regionkey == rsum[arc].regionkey); });
     clist.innerHTML = '';
     countries.forEach(function(d){
         var li = clist.append("li");
